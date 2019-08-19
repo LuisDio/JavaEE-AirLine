@@ -1,6 +1,8 @@
 package com.airline.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,12 @@ public class AddPassenger extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		PrintWriter out = response.getWriter();
+		
+		response.setContentType("text/html");
+		out.println("<html><body>");
+		out.println("<h2>Welcome to world Adventure Airlines</h2");
+		out.println("</body></html>");
 	}
 
 	/**
