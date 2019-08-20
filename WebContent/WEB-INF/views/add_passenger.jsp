@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>World Adventures Airlines</title>
+<link rel="stylesheet" href="resources/css/normalize.css" />
+<link rel="stylesheet" href="resources/css/theme.css" />
 </head>
 <body>
 	<div class="container">
