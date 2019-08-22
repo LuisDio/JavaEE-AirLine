@@ -1,6 +1,7 @@
 package com.airline.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.regex.Matcher;
@@ -12,6 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.airline.models.Gender;
+import com.airline.models.Passenger;
 
 /**
  * Servlet implementation class AddPassenger
@@ -45,6 +49,8 @@ public class AddPassenger extends HttpServlet {
 		
 		request.setAttribute("errors", false);
 		
+		Passenger p = new Passenger();
+		
 		String firstName = request.getParameter("first-name");
 		System.out.println(firstName);
 		
@@ -53,7 +59,12 @@ public class AddPassenger extends HttpServlet {
 			System.out.println("empty first name error");
 			request.setAttribute("errors", true);
 			request.setAttribute("firstname_error", true);
+			
+		} else {
+			
+			p.setFirstName(firstName);
 		}
+		
 		
 		String lastName = request.getParameter("last-name");
 		System.out.println("LastName: " + lastName);
@@ -63,7 +74,12 @@ public class AddPassenger extends HttpServlet {
 			System.out.println("empty last name error");
 			request.setAttribute("errors", true);
 			request.setAttribute("lastname_error", true);
+			
+		} else {
+			
+			p.setLastName(lastName);
 		}
+		
 		
 		String dob_raw = request.getParameter("dob");
 		String dobArray[] = dob_raw.split("\\/");
@@ -85,20 +101,31 @@ public class AddPassenger extends HttpServlet {
 			Date dob = cal.getTime();
 			System.out.println("dob: " + dob);
 			
+			p.setDob(dob);
+			
 		} else {
 			System.out.println("Invalid date of birth");
 			request.setAttribute("errors", true);
 			request.setAttribute("date_format_error", true);
 		}
 		
+		
 		// No need to verify gender as it will always be either male or female
 		String gender = request.getParameter("gender");
 		System.out.println("gender: " + gender);
+		
+		p.setGender(Gender.valueOf(gender));
 		
 		if ((Boolean)request.getAttribute("errors")) {
 			
 			RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_passenger.jsp");
 			view.forward(request, response);
+			
+		} else {
+			
+			ArrayList<Passenger> pList = new ArrayList<Passenger>();
+			pList.add(p);
+			response.sendRedirect("");
 			
 		}
 		
