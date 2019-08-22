@@ -16,8 +16,8 @@
 			if(request.getAttribute("errors") != null) {
 				
 		%>
-			<fiedlset>
-				<legend>Errors</legend>
+			<fieldset id="error_fieldset">
+				<legend align="center">Errors</legend>
 				<ul>
 					<% if (request.getAttribute("firstname_error") != null) {%>
 					<li class="error">First name error</li>
@@ -32,12 +32,12 @@
 					<% } %>
 					
 				</ul>
-			</fiedlset>
+			</fieldset>
 		<%
 			}
 		%>
 		<fieldset>
-			<legend>Passenger details</legend>
+			<legend align="center">Passenger details</legend>
 			<form action="AddPassenger" method="post">
 			<div class="inputfield">
 				<label for="first-name" class="inputLabel">First Name:</label>
