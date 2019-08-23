@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -123,8 +124,11 @@ public class AddPassenger extends HttpServlet {
 			
 		} else {
 			
-			ArrayList<Passenger> pList = new ArrayList<Passenger>();
+			ServletContext sc = this.getServletContext();
+			
+			ArrayList<Passenger> pList = (ArrayList<Passenger>) sc.getAttribute("passengers");
 			pList.add(p);
+			sc.setAttribute("passengers", pList);
 			response.sendRedirect("");
 			
 		}
