@@ -134,11 +134,8 @@ public class AddPassenger extends HttpServlet {
 			ServletContext sc = this.getServletContext();
 
 			synchronized (this) {
-				ArrayList<Passenger> pList = (ArrayList<Passenger>) sc
-						.getAttribute("passengers");
-
+				ArrayList<Passenger> pList = (ArrayList<Passenger>) sc.getAttribute("passengers");
 				pList.add(p);
-
 				sc.setAttribute("passengers", pList);
 			}
 

@@ -25,21 +25,18 @@ public class MainPage extends HttpServlet {
      */
     public MainPage() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		PrintWriter out = response.getWriter();
-		
 		response.setContentType("text/html");
 		
 		ServletContext sc = this.getServletContext();
-		
 		ArrayList<Passenger> pList = (ArrayList<Passenger>)sc.getAttribute("passengers");
 		
 		out.println("Passenger has been added to list. Number of passengers: " + pList.size());
@@ -50,7 +47,7 @@ public class MainPage extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }
