@@ -38,12 +38,10 @@ public class AddPassenger extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher view = request
-				.getRequestDispatcher("WEB-INF/views/add_passenger.jsp");
-
+		request.setAttribute("first_name", "");
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/views/add_passenger.jsp");
 		view.forward(request, response);
 
 	}
@@ -52,8 +50,7 @@ public class AddPassenger extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		request.setAttribute("errors", false);
 
@@ -67,9 +64,11 @@ public class AddPassenger extends HttpServlet {
 
 			request.setAttribute("errors", true);
 			request.setAttribute("firstname_error", true);
+			request.setAttribute("first_name", "");
 
 		} else {
 			p.setFirstName(firstName);
+			request.setAttribute("first_name", firstName);
 		}
 
 		String lastName = request.getParameter("last-name");
