@@ -70,12 +70,12 @@
 
 				<div class="inputField">
 					<label for="last-name" class="inputLabel">Last name: </label> <input
-						name="last-name" type="text"></input>
+						name="last-name" type="text" value="<%= request.getAttribute("last_name")%>"></input>
 				</div>
 
 				<div class="inputField">
 					<label for="dob" class="inputLabel">Date of birth: </label> <input
-						name="dob" type="text"></input>
+						name="dob" type="text" value="<%= request.getAttribute("dob")%>"></input>
 				</div>
 
 				<div class="inputField">
