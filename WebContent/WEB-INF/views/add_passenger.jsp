@@ -65,7 +65,7 @@
 
 				<div class="inputField">
 					<label for="first-name" class="inputLabel">First name: </label> <input
-						name="first-name" type="text"></input>
+						name="first-name" type="text" value="<%= request.getAttribute("first_name")%>"></input>
 				</div>
 
 				<div class="inputField">
